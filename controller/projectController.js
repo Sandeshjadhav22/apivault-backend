@@ -17,91 +17,23 @@ import User from "../models/userModel.js";
 //   };
 // };
 
-// const createProject = async (req, res) => {
-//   try {
-//     const { projectName, apiKeys, userId } = req.body;
-
-//     //!debug
-//     console.log("Request Body:", req.body);
-
-//     if (!userId) {
-//       return res.status(400).json({ message: "user ID  required" });
-//     }
-
-//     if (!projectName || !apiKeys || apiKeys.length === 0) {
-//       return res
-//         .status(400)
-//         .json({ message: "Project name and API keys are  required." });
-//     }
-
-//     //! Debugging: Check apiKeys data
-//     console.log("API Keys:", apiKeys);
-
-//     const transformedApiKeys = apiKeys.map((key) => ({
-//       name: key.name,
-//       encryptedKey: key.key, // No encryption applied for now
-//     }));
-
-//     //! Debugging: Check transformed apiKeysArray
-//     console.log("Transformed API Keys:", transformedApiKeys);
-
-//     const project = new Project({
-//       projectName,
-//       user: userId, // Valid userId
-//       apiKeys: transformedApiKeys,
-//     });
-
-//     //!debug for project
-//     console.log("Project before save:", project);
-
-//     const savedProject = await project.save();
-
-//     //!debug for save user
-//     console.log("Saved Project:", savedProject);
-
-//     const user = await User.findById(userId);
-//     if (user) {
-//       user.projects.push(savedProject._id);
-//       await user.save();
-//     } else {
-//       return res.status(404).json({ message: "User not found." });
-//     }
-//     res.status(201).json({
-//       message: "Project created successfully!",
-//       project: savedProject,
-//     });
-//   } catch (err) {
-//     console.error(err);
-//     res
-//       .status(500)
-//       .json({ message: "An error occurred while creating the project." });
-//   }
-// };
-
 const createProject = async (req, res) => {
   try {
-    const apiKeys = req.body.apiKeys || [];
-    //  console.log('API Keys from request:', apiKeys);
+    const { apiKeys, projectName, userId } = req.body;
 
     const transformedApiKeys = apiKeys.map((key) => ({
       name: key.name,
       encryptedKey: key.key, // No encryption for now
     }));
-    //  console.log('Transformed API Keys:', transformedApiKeys);
 
     const project = new Project({
-      projectName: req.body.projectName,
-      user: req.body.userId,
+      projectName: projectName,
+      user: userId,
       apikeys: transformedApiKeys,
     });
 
-    //  console.log('Project before  save:', project); // Debug the project object before saving
-
-    // Save the project
     const savedProject = await project.save();
-    console.log("Saved Project:", savedProject);
 
-    // Respond to the client
     res.status(201).json({
       message: "Project created successfully!",
       project: savedProject,
