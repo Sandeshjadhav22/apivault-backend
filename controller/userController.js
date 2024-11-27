@@ -36,4 +36,29 @@ const signupUser = async (req, res) => {
   }
 };
 
-export { signupUser };
+const logInUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res
+        .status(400)
+        .json({ message: "User does not exists, Please try to signUp" });
+    }
+
+    if (password != user.password) {
+      return res.status(400).json({ message: "Invalid Password" });
+    }
+    genrateTokenAndSetCookie(user._id, res);
+    res.status(200).json({
+      _id: user._id,
+      name: user.username,
+      email: user.email,
+    });
+  } catch (error) {
+    res.status(500);
+    console.log("Error in LogIn user ", error);
+  }
+};
+export { signupUser, logInUser };

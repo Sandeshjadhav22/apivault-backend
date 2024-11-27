@@ -3,6 +3,7 @@ import connectDB from "./mongoDB/connect.js";
 import * as dotenv from "dotenv";
 
 import userRoutes from "./routes/userRoutes.js"
+import projectRoutes from "./routes/projectRoutes.js"
 
 dotenv.config();
 connectDB(process.env.MONGODB_URL);
@@ -23,12 +24,13 @@ app.use(express.urlencoded({extended: true}))
 
 //*Routes
 app.use('/api/users',userRoutes);
+app.use('/api/projects',projectRoutes);
 
 
 const startServer = () => {
   try {
     app.listen(PORT, () => {
-      console.log(`Server started on PORT : ${PORT}`);
+      console.log(`Server started on  PORT : ${PORT}`);
     });
   } catch (error) {
     console.log(error);
