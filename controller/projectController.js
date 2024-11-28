@@ -33,6 +33,11 @@ const createProject = async (req, res) => {
     });
 
     const savedProject = await project.save();
+    await User.findByIdAndUpdate(
+      userId,
+      { $push: { projects: savedProject._id } },
+      { new: true }
+    );
 
     res.status(201).json({
       message: "Project created successfully!",
@@ -46,4 +51,22 @@ const createProject = async (req, res) => {
   }
 };
 
-export { createProject };
+const deleteProject = async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id);
+    if (!project) {
+      return res.status(404).json({ error: "Project not found!" });
+    }
+
+    await Project.findByIdAndDelete(req.params.id);
+    await User.findByIdAndUpdate(project.user, {
+      $pull: { projects: project._id },
+    });
+    res.status(200).json({ message: "Project deleted succesfully" });
+  } catch (error) {
+    res.status(500).json({ error });
+    console.log("Error in Delete Project controller", error);
+  }
+};
+
+export { createProject, deleteProject };
