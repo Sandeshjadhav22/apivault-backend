@@ -10,7 +10,7 @@ const router = express.Router();
 
 //*project route
 router.post("/create", createProject);
-router.delete("/:id", deleteProject);
+router.delete("/:id",protectRoute ,deleteProject);
 router.get("/getAllProjects", protectRoute, getAllProjects);
 
 
