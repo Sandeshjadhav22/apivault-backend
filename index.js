@@ -1,5 +1,6 @@
 import express from "express";
 import connectDB from "./mongoDB/connect.js";
+import cookieParser from "cookie-parser";
 import * as dotenv from "dotenv";
 
 import userRoutes from "./routes/userRoutes.js"
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 //*Middlewares
 app.use(express.json()); //to parse JSON data in req.body
 app.use(express.urlencoded({extended: true}))
-// app.use(cookieParser());
+app.use(cookieParser());
 
 
 //*Routes
