@@ -56,13 +56,13 @@ npm run dev
 
 <h2 id="routes">📍 API Endpoints</h2>
 ​
-| route               | description                                          
-|----------------------|-----------------------------------------------------
-| <kbd>GET /api/users/signup</kbd>     | To sign up user  [response details](#get-auth-detail)
-| <kbd>GET /api/users/login</kbd>     | To login user [request details](#post-auth-detail)
-| <kbd>POST /api/projects/create</kbd>     | To Create the project [request details](#post-auth-detail)
-| <kbd>DELETE /api/projects/:id</kbd>     | To Specific project [request details](#post-auth-detail)
-| <kbd>GET /api/projects/getAllProjects</kbd>     | To Get all projects [request details](#post-auth-detail)
+| Route | Description                |
+| :-------- |------------------------- |
+| `GET /api/users/signup`|  sign up user |
+| `GET /api/users/login`|  login user |
+| `POST /api/projects/create`|Create the project |
+| `DELETE /api/projects/:id`|  Specific project |
+| `GET /api/projects/getAllProjects`|  Get all projects |
 
 <h3 id="get-auth-detail">GET /api/users/signup</h3>
 
