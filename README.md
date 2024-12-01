@@ -58,13 +58,13 @@ npm run dev
 
 | Route | Description                |
 | :-------- |------------------------- |
-| `GET /api/users/signup`|  sign up user |
-| `GET /api/users/login`|  login user |
+| `POST /api/users/signup`|  sign up user |
+| `POST /api/users/login`|  login user |
 | `POST /api/projects/create`|Create the project |
 | `DELETE /api/projects/:id`|  Specific project |
 | `GET /api/projects/getAllProjects`|  Get all projects |
 
-<h3 id="get-auth-detail">GET /api/users/signup</h3>
+<h3 id="get-auth-detail">POST /api/users/signup</h3>
 
 **RESPONSE**
 ```json
@@ -75,7 +75,7 @@ npm run dev
 }
 ```
 
-<h3 id="post-auth-detail">GET /api/users/login</h3>
+<h3 id="post-auth-detail">POST /api/users/login</h3>
 
 **REQUEST**
 ```json
