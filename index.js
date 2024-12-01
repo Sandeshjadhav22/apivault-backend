@@ -1,7 +1,7 @@
 import express from "express";
 import connectDB from "./mongoDB/connect.js";
 import cookieParser from "cookie-parser";
-import cors from "cors"
+import cors from "cors";
 import * as dotenv from "dotenv";
 
 import userRoutes from "./routes/userRoutes.js";
@@ -10,11 +10,13 @@ import projectRoutes from "./routes/projectRoutes.js";
 dotenv.config();
 
 const app = express();
-const allowedOrigins = ["http://localhost:3000"]
+const allowedOrigins = ["http://localhost:3000"];
 const corsOptions = {
-  origin:allowedOrigins,
-  credential: true
-}
+  origin: allowedOrigins,
+  credential: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
 
 app.get("/", (req, res) => {
   res.send("Hello sandyy");
