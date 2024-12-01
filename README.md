@@ -55,7 +55,7 @@ npm run dev
 ```
 
 <h2 id="routes">📍 API Endpoints</h2>
-​
+
 | Route | Description                |
 | :-------- |------------------------- |
 | `GET /api/users/signup`|  sign up user |
