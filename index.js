@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 
 import userRoutes from "./routes/userRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
+import authRoutes from "./routes/authRoutes.js"
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use("/api/users", userRoutes);
 app.use("/api/projects", projectRoutes);
+app.use("/api/auth", authRoutes);
 
 export default app;
 
