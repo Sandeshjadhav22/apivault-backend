@@ -5,13 +5,14 @@ import {
   getAllProjects,
 } from "../controller/projectController.js";
 import protectRoute from "../middlewares/protectRoute.js";
+import verifyToken from "../middlewares/verifyToken.js";
 
 const router = express.Router();
 
 //*project route
 router.post("/create", createProject);
 router.delete("/:id",protectRoute ,deleteProject);
-router.get("/getAllProjects", protectRoute, getAllProjects);
+router.get("/getAllProjects", verifyToken, getAllProjects);
 
 
 
