@@ -18,6 +18,7 @@ const signupUser = async (req, res) => {
       password,
     });
 
+T+ 
     await newUser.save();
 
     if (newUser) {
@@ -52,7 +53,7 @@ const logInUser = async (req, res) => {
     }
     genrateTokenAndSetCookie(user._id, res);
     res.status(200).json({
-      _id: user._id,
+      _id:+ user._id,
       name: user.username,
       email: user.email,
     });

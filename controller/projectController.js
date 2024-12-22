@@ -78,6 +78,7 @@ const deleteProject = async (req, res) => {
 
 const getAllProjects = async (req, res) => {
   try {
+    //get user id from jwt middleware
     const userId = req.user._id;
 
     const projects = await Project.find({ user: userId }).sort({createdAt:-1});
