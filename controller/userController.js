@@ -51,11 +51,12 @@ const logInUser = async (req, res) => {
     if (password != user.password) {
       return res.status(400).json({ message: "Invalid Password" });
     }
-    genrateTokenAndSetCookie(user._id, res);
+   const token =  genrateTokenAndSetCookie(user._id, res);
     res.status(200).json({
-      _id:+ user._id,
+      _id: user._id,
       name: user.username,
       email: user.email,
+      token
     });
   } catch (error) {
     res.status(500);
