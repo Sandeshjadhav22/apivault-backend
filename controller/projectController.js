@@ -52,20 +52,22 @@ const createProject = async (req, res) => {
 };
 
 const deleteProject = async (req, res) => {
+  const projectId = req.params.id;
+  const userId = req.user.userId;
   try {
-    const project = await Project.findById(req.params.id);
+    const project = await Project.findById(projectId);
     if (!project) {
       return res.status(404).json({ error: "Project not found!" });
     }
     
-    if(project.user.toString() !== req.user._id.toString()){
+    if(project.user.toString() !== userId.toString()){
       return res
         .status(401)
         .json({ error: "Unauthorised to deleted the project" });
     }
 
     
-    await Project.findByIdAndDelete(req.params.id);
+    await Project.findByIdAndDelete(projectId);
     await User.findByIdAndUpdate(project.user, {
       $pull: { projects: project._id },
     });
