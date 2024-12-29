@@ -11,7 +11,7 @@ import authRoutes from "./routes/authRoutes.js"
 dotenv.config();
 
 const app = express();
-const allowedOrigins = ["http://localhost:3000","https://apivalut.vercel.app/"];
+const allowedOrigins = ["http://localhost:3000","https://apivalut.vercel.app"];
 const corsOptions = {
   origin: allowedOrigins,
   credentials: true,
