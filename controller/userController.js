@@ -18,15 +18,16 @@ const signupUser = async (req, res) => {
       password,
     });
 
-T+ 
+ 
     await newUser.save();
 
     if (newUser) {
-      genrateTokenAndSetCookie(newUser._id, res);
+     const token = genrateTokenAndSetCookie(newUser._id, res);
       res.status(201).json({
         _id: newUser._id,
         name: newUser.username,
         email: newUser.email,
+        token
       });
     } else {
       res.status(400).json({ error: "Invalid user Data" });
