@@ -10,6 +10,14 @@ const apiKeySchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  iv: {
+    type: String,
+    required: true,
+  },
+  authTag: {
+    type: String,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -28,14 +36,13 @@ const projectSchema = mongoose.Schema(
       required: true,
     },
     apikeys: {
-      type: [apiKeySchema], // Ensure it references the sub-schema correctly
-      default: [],         // Default to an empty array
+      type: [apiKeySchema],
+      default: [],        
   },
   },
   { timestamps: true }
 );
 
 const Project = mongoose.model("Project", projectSchema);
-// const APIKey = mongoose.model('APIKey', apiKeySchema);
 
 export default Project;

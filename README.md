@@ -95,6 +95,12 @@ npm run dev
 
 <h3 id="post-auth-detail">POST /api/projects/create</h3>
 
+
+**Store & Get Api keys in Secured Formate (using AES 256 -IV alogrithm)**
+<h3 id="post-auth-detail">POST /api/projects/v1/create</h3>
+<h3 id="post-auth-detail">GET /api/projects/v1/getAllProjects</h3>
+
+
 **REQUEST**
 ```json
 {
@@ -128,6 +134,8 @@ npm run dev
 
 
 <h3 id="post-auth-detail">GET /api/projects/getAllProjects</h3>
+
+
 
 **RESPONSE**
 ```json
