@@ -12,11 +12,11 @@ const apiKeySchema = mongoose.Schema({
   },
   iv: {
     type: String,
-    required: true,
+    // required: true,
   },
   authTag: {
     type: String,
-    required: true,
+    // required: true,
   },
   createdAt: {
     type: Date,
